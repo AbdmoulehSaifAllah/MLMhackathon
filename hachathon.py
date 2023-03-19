@@ -69,3 +69,40 @@ history = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, vali
 # Evaluate the model on the test data
 loss, accuracy = model.evaluate(x_val, y_val)
 print("Loss: {:.4f}, Accuracy: {:.4f}".format(loss, accuracy))
+
+from flask import Flask, jsonify, request
+
+# Load the saved model weights
+model = Sequential()
+model.add(Dense(units=1, input_shape=[1]))
+model.load_weights('model_weights.h5')
+
+# Set up the Flask app
+app = Flask(__name__)
+
+# Define the API endpoint for making predictions
+@app.route('/predict', methods=['POST'])
+def predict():
+    data = request.json
+    x = np.array(data['x'])
+    y_pred = model.predict(x)
+    return jsonify({'y_pred': y_pred.tolist()})
+
+
+import requests
+
+# Set up the request payload
+data = {'x': [1, 2, 3, 4, 5]}
+
+# Send a POST request to the API endpoint
+response = requests.post('http://<api-url>/predict', json=data)
+
+# Check the response status code
+if response.status_code == 200:
+    # Get the predicted values from the response JSON
+    y_pred = response.json()['y_pred']
+    
+    # Print the predicted values
+    print('Predicted Values:', y_pred)
+else:
+    print('Error:', response.text)
