@@ -1,2 +1,2 @@
- un site web en HTML, CSS, JavaScript et Bootstrap qui permet de fournir des résumés de livres 
- à partir d'un modèle d'intelligence artificielle.
+peaufiner un modèle d'intelligence artificielle qui permet de résumer des livres en Python,
+avec un déploiement sur un site web en utilisant HTML, CSS, JavaScript et Bootstrap
