@@ -1,2 +1,2 @@
-Peaufiner un modèle d'intelligence artificielle qui permet de résumer des livres en Python,
-avec un déploiement sur un site web en utilisant HTML, CSS, JavaScript et Bootstrap
+Développer un site web en JavaScript, Bootstrap, CSS, HTML 
+en tentant d'intégrer un modèle d'intelligence artificielle pour résumer des livres en Python.
